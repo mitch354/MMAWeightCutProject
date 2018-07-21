@@ -1,6 +1,8 @@
 # CMPT-353
 ## MMAWeightCutProject
 
+####Background
+
 In	most	combat	sports	athletes	are	separated	by	and	compete	within	weight	classes.
 A	weight	class	is	a	range	of	weights	(i.e	171	lbs	– 186	lbs	for	the	middleweight	division) in
 which	the	athlete	must	officially	weigh	in	at	in	order	for	the	fight	to	be	sanctioned	by	the
