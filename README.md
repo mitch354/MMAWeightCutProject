@@ -1,1 +1,2 @@
-#CMPT-353 <br># MMAWeightCutProject
+# CMPT-353
+## MMAWeightCutProject
