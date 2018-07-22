@@ -47,4 +47,7 @@ fighters_df.loc[fighters_df['reach'] == 0, 'reach'] = fighters_df['height']
 fighters_df = fighters_df[fighters_df.height != 0]
 fighters_df = fighters_df.reset_index(drop=True)
 
+# drop extra columns
+fighters_df = fighters_df.drop(['link'], axis=1)
+
 fighters_df.to_json('fighters.json', orient='records')
