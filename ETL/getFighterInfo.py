@@ -16,7 +16,7 @@ def getFighterReach(link):
     else:
         return 0
 
-# returns a json list of all fighters
+# returns a json list of all fighters with their info
 fighters = requests.get('http://ufc-data-api.ufc.com/api/v3/iphone/fighters')
 
 # put json data into a Pandas dataframe and keep only a few columns
