@@ -1,5 +1,5 @@
-#Outputs the fighter's id into a json file
-#This ID is needed to get individual fighter info from the http://ufc-data-api.ufc.com/api/v3/iphone/fighters/:id URL
+# Outputs the fighter's info into a json file
+# ID is needed to get individual fighter info from the http://ufc-data-api.ufc.com/api/v3/iphone/fighters/:id URL
 
 import requests
 import pandas as pd
