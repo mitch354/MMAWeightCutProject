@@ -47,4 +47,10 @@ for i in range(0,len(fighters)):
                 weight_limit = fighter_data['fights'][j]['WeightClass']['Description']
                 fights.loc[len(fights)] = [fighter_id, date, weigh_in, won, weight_limit]
 
+fights = fights.dropna()
+fights['max_weight'] = fights['weight_limit'].apply(lambda x: weight_dict[x])
+fights['weigh_in'] = pd.to_numeric(fights['weigh_in'])
+fights = fights[fights['max_weight'] != 0]
+fights = fights.reset_index(drop=True)
+
 fights.to_json('fights.json', orient='records')
