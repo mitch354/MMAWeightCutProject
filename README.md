@@ -38,3 +38,7 @@ Analysis/missedWeightAge.py, Analysis/missedWeightTime.py, Analysis/weightClassi
 
 These take the produced json files as input. No parameters are needed.
 python3 missedWeightAge.py
+
+#### Dependencies
+
+Anaconda 5.1.0
