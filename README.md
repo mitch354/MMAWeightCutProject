@@ -25,3 +25,16 @@ opponent	will. Weight	cutting	has	also	led	to	fighters	missing	weight,	having	to
 weight	cut	short	of	the	upper	limit	due	to	medical	concerns,	and	weighing	in	heavier	than
 their	classes	limit.	 The	goal	of	this	project	is	to	explore	under	what	conditions	this	might
 happen	and	what	attributes	to	look	for	in	a	fighter	that	is	likely	to	miss	weight.
+
+#### Instructions
+
+ETL/getFights.py & ETL/getFighters.py
+
+Both of these can run from the command line like: python3 getFights.py
+They output fights.json and fighters.json respectively. These each take 10+ minutes
+to run so a copy of each is already available.
+
+Analysis/missedWeightAge.py, Analysis/missedWeightTime.py, Analysis/weightClassifier.py
+
+These take the produced json files as input. No parameters are needed.
+python3 missedWeightAge.py
