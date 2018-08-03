@@ -6,6 +6,22 @@ import pandas as pd
 import time
 from lxml import html
 
+# For changing the names returned by the API
+weight_dict = {
+    "Women_Strawweight": "Women's Strawweight",
+    "Women_Flyweight": "Women's Flyweight",
+    "Women_Bantamweight": "Women's Bantamweight",
+    'Women_Featherweight': "Women's Featherweight",
+    "Flyweight": "Flyweight",
+    "Bantamweight": "Bantamweight",
+    "Featherweight": "Featherweight",
+    "Lightweight": "Lightweight",
+    "Welterweight": "Welterweight",
+    "Middleweight": "Middleweight",
+    "Light_Heavyweight": "Light Heavyweight",
+    "Heavyweight": "Heavyweight",
+}
+
 # scrapes the html to find the reach of a fighter
 def getFighterReach(link):
     page = requests.get(link)
@@ -26,6 +42,7 @@ fighters_df = fighters_df[['name', 'weight_class', 'id', 'link']]
 fighters_df = fighters_df.dropna()
 fighters_df.id = fighters_df.id.astype(int)
 fighters_df = fighters_df.reset_index(drop=True)
+# Columns to be added through additional API calls and web scraping
 fighters_df['dob'] = ""
 fighters_df['height'] = ""
 fighters_df['reach'] = ""
@@ -43,11 +60,14 @@ for i in range(0,fighters_df.shape[0]):
 fighters_df['reach'] = fighters_df['link'].apply(getFighterReach)
 # Impute data, not all fighter profiles contain reach info. Height is a good estimation.
 fighters_df.loc[fighters_df['reach'] == 0, 'reach'] = fighters_df['height']
-# A few fighters don't have height, remove these and reset the index
+# A few fighters don't have a height listed, remove these and reset the index
 fighters_df = fighters_df[fighters_df.height != 0]
 fighters_df = fighters_df.reset_index(drop=True)
 
-# drop extra columns
+# drop extra columns, and adjust a few column values / datatypes
 fighters_df = fighters_df.drop(['link'], axis=1)
+fighters_df['weight_class'] = fighters_df['weight_class'].apply(lambda x: weight_dict[x])
+fighters_df['dob'] = pd.to_datetime(fighters_df['dob'])
 
+# Save dataframe to a json file
 fighters_df.to_json('fighters.json', orient='records')
